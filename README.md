@@ -1,4 +1,9 @@
+<img src="DSA_Journey_Banner.png" alt="DSA Journey Banner" style="width:100%;"/>
+
+
 # 📘 DSA Journey by Ashita
+
+
 
 Welcome to my **DSA Learning Journey** 🚀  
 This repository is a reflection of my commitment to learn, revise, and grow in **Data Structures & Algorithms (DSA)**—step by step, from basics to mastery!
