@@ -1,1 +1,99 @@
+class Solution {
+    public boolean search(int[] nums, int target) {
+        int lo = 0;
+        int hi = nums.length - 1;
+
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+
+            // Case 1: Target found
+            if (nums[mid] == target) {
+                return true;
+            }
+
+            /*
+             * Case 2: Duplicate ambiguity
+             * nums[lo] == nums[mid] == nums[hi]
+             * We cannot decide which side is sorted
+             * So we shrink the search space
+             */
+            if (nums[lo] == nums[mid] && nums[mid] == nums[hi]) {
+                lo++;
+                hi--;
+            }
+
+            /*
+             * Case 3: Left half is sorted
+             */
+            else if (nums[lo] <= nums[mid]) {
+                // Check if target lies in the left sorted half
+                if (nums[lo] <= target && target < nums[mid]) {
+                    hi = mid - 1;   // discard right half
+                } else {
+                    lo = mid + 1;   // discard left half
+                }
+            }
+
+            /*
+             * Case 4: Right half is sorted
+             */
+            else {
+                // Check if target lies in the right sorted half
+                if (nums[mid] < target && target <= nums[hi]) {
+                    lo = mid + 1;
+                } else {
+                    hi = mid - 1;
+                }
+            }
+        }
+
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+# Search in Rotated Sorted Array II (LeetCode 81)
+
+## Problem
+Given a rotated sorted array that may contain duplicates, determine whether a target value exists.
+
+---
+
+## Approach (Binary Search with Duplicates)
+
+1. Use binary search with `lo`, `mid`, `hi`
+2. If `nums[mid] == target` → return true
+3. If `nums[lo] == nums[mid] == nums[hi]`
+   - We cannot decide which side is sorted
+   - Shrink the search space (`lo++`, `hi--`)
+4. If left half is sorted:
+   - Check whether target lies in left half
+5. Else:
+   - Right half must be sorted
+
+---
+
+## Edge Cases Covered
+- Duplicate values
+- Fully rotated array
+- Not rotated array
+- Target not present
+- Single element array
+
+---
+
+## Time Complexity
+- Average: O(log n)
+- Worst case (due to duplicates): O(n)
+
+---
+
+## Key Learning
+Duplicates break the usual binary search guarantees.
 
