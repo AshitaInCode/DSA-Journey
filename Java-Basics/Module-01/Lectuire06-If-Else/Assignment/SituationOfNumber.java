@@ -1,0 +1,58 @@
+/*
+Problem Description
+
+Check whether a given number is positive-odd, positive-even, negative-odd OR negative-even.
+Write a code to figure out the Situation.
+Take a number N from user and print the Situation Of Number.
+if positive-odd : print -> "Number is Positive and Odd"
+if positive-even : print -> "Number is Positive and Even"
+if negative-odd : print -> "Number is Negative and Odd"
+if negative-even : print -> "Number is Negative and Even"
+
+
+Problem Constraints
+
+-1000000 <= N <= 1000000
+
+
+Input Format
+
+Take a number N from user.
+
+
+Output Format
+
+Print the Situation Of Number according to condition.
+
+
+Example Input
+
+Input 1 :
+198
+
+Input 2 :
+-167
+*/
+
+import java.util.Scanner;
+
+public class SituationOfNumber {
+     public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        if(n>0){
+            if(n%2==0){
+                System.out.println("Number is Positive and Even");
+            }else{
+                System.out.println("Number is Positive and Odd");
+            }
+        }else{
+            if(n%2==0){
+                System.out.println("Number is Negative and Even");
+            }else{
+                System.out.println("Number is Negative and Odd");
+            }
+
+        }
+    }
+}
